@@ -19,6 +19,18 @@ class PostController extends Controller
             'email' => ['required', 'min:10'],
         ]);
 
+        $existingPost = Post::where('number', $request->number)->first();
+        $existingPost1 = Post::where('email', $request->email)->first();
+
+
+        if ($existingPost) {
+            return redirect('register')->withErrors(['number' => 'This phone number is already registered.']);
+        }
+
+        if ($existingPost1) {
+            return redirect('register')->withErrors(['email' => 'This email is already registered.']);
+        }
+
         $post = new Post();
         $post->name = $request->name;
         $post->qualification = $request->qualification;
@@ -34,8 +46,8 @@ class PostController extends Controller
     {
         // return DB::table('posts')->get();
         $posts = Post::all();
+        // $posts = Post::where('name', 'LIKE', 'Akash%')->get();
 
-        // Use the compact function to pass the $posts variable to the view
         return view('show', compact('posts'));
     }
 }

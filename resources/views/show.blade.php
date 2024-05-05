@@ -6,7 +6,7 @@
     <title>Application</title>
 </head>
 <body class="ml-4 mt-2">
-    <h1 class="mb-4">List of Application</h1>
+    <h1 class="mb-4">List of Applicants</h1>
     {{-- <a href="/register" class="btn btn-primary position-absolute top-0 top-0 ml-100">Go To Register</a> --}}
 
 
